@@ -246,3 +246,4 @@ export default function CuratorChat({ onOpenConcierge, onOpenPVR, onSelectArtwor
     </>
   );
 }
+

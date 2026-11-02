@@ -219,3 +219,4 @@ export default function PortfolioCalculator({ onOpenConcierge, onShowToast }) {
     </section>
   );
 }
+

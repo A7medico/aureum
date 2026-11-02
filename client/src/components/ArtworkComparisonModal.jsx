@@ -101,3 +101,4 @@ export default function ArtworkComparisonModal({ artA, artB, onClose, onInquire 
     </div>
   );
 }
+
