@@ -1,0 +1,300 @@
+export const initialArtworks = [
+  {
+    id: "art-convergence",
+    title: "Convergence",
+    artist: "Émile Vaneau",
+    year: "2024",
+    category: "contemporary",
+    medium: "Oil, emerald pigment & 24k gold leaf on Belgian linen",
+    dimensions: "180 × 140 cm (70.9 × 55.1 in)",
+    framedDimensions: "192 × 152 cm (gilded walnut float frame)",
+    valuation: "$1,450,000 — $1,800,000",
+    status: "Available Privately",
+    statusType: "available",
+    image: "/images/art-convergence.jpg",
+    provenanceSnippet: "Acquired directly from the artist's studio; first exhibited at Grand Palais Éphémère.",
+    provenance: [
+      { year: "2024", event: "Studio of the Artist, Paris", notes: "Commissioned as part of the 'Prisme d'Or' cycle" },
+      { year: "2024", event: "Private Viewing, Grand Palais Éphémère", notes: "Exhibited anonymously by invitation" },
+      { year: "2024", event: "AUREUM Private Advisory", notes: "Reserved for patron acquisition under exclusive mandate" }
+    ],
+    curatorialNotes: "Convergence stands as the defining masterwork of Vaneau's geometric cycle. By contrasting hand-beaten 24k gold leaf with deep mineral emerald green, the composition constructs an architectural tension between light and spatial permanence. The surface responds dynamically to circadian lighting, transforming through morning clarity and twilight warmth.",
+    condition: "Pristine. Museum-standard climate storage (20°C, 50% RH). Hand-signed and dated verso with artist's thumbprint seal.",
+    certificate: "Accompanied by AUREUM Certified Provenance Dossier & Artist Certificate of Authenticity (No. EV-2024-08)",
+    scale: {
+      widthCm: 140,
+      heightCm: 180,
+      aspectRatio: 0.778
+    }
+  },
+  {
+    id: "art-aurelius",
+    title: "Aurelius",
+    artist: "Helena Rostova",
+    year: "2024",
+    category: "commission",
+    medium: "Tempera, lapis pigment & layered 23.75k Florentine leaf",
+    dimensions: "200 × 160 cm (78.7 × 63.0 in)",
+    framedDimensions: "214 × 174 cm (custom blackened bronze frame)",
+    valuation: "$2,100,000 — $2,600,000",
+    status: "Private Collection (On Loan)",
+    statusType: "loan",
+    image: "/images/art-aurelius.jpg",
+    provenanceSnippet: "Private Family Office, Zurich · Commissioned via Aureum Advisory.",
+    provenance: [
+      { year: "2023", event: "Conception & Patron Commission", notes: "Arranged through Aureum Private Advisory Zurich" },
+      { year: "2024", event: "Completion & Private Installation", notes: "Private Residence, Lake Zurich" },
+      { year: "2024", event: "AUREUM Retrospective Loan", notes: "Temporarily made available for accredited patron viewing" }
+    ],
+    curatorialNotes: "Rostova's monumental 'Aurelius' draws direct philosophical lineage from Stoic contemplative geometry and Vienna Secessionist craftsmanship. The radiating sunburst and tiered fan motifs represent the passage of timeless intellect over ephemeral chaos.",
+    condition: "Flawless condition. Sealed under Optium Museum Acrylic with 99% UV isolation.",
+    certificate: "Swiss Art Research Institute (SARI) Provenance Archive Registered; Certificate of Inalienable Authenticity HR-2024-ZUR.",
+    scale: {
+      widthCm: 160,
+      heightCm: 200,
+      aspectRatio: 0.8
+    }
+  },
+  {
+    id: "art-nocturne",
+    title: "Nocturne in Sapphire",
+    artist: "Julian Saint-Claire",
+    year: "2023",
+    category: "contemporary",
+    medium: "Fine oil, pulverized Afghan lapis lazuli & platinum leaf",
+    dimensions: "150 × 150 cm (59.1 × 59.1 in)",
+    framedDimensions: "162 × 162 cm (ebonized maple with brass bezel)",
+    valuation: "$950,000 — $1,250,000",
+    status: "Available Privately",
+    statusType: "available",
+    image: "/images/art-nocturne.jpg",
+    provenanceSnippet: "Acquired at Sotheby's Evening Sale, London; Single private owner since creation.",
+    provenance: [
+      { year: "2023", event: "Saint-Claire Studio, Mayfair, London", notes: "Created for private salon exhibition" },
+      { year: "2023", event: "Sotheby's Contemporary Evening Sale, London", notes: "Sold to European Private Collector, Lot 14" },
+      { year: "2024", event: "Consigned to AUREUM Advisory", notes: "Exclusively represented for secondary acquisition" }
+    ],
+    curatorialNotes: "A circular meditation on the cosmic horizon. Saint-Claire grinds raw Afghan lapis lazuli by hand using 17th-century Florentine mortar techniques, yielding a chromatic resonance that impossible with synthetic ultramarine. The circular gold armature draws the viewer's gaze into an infinite metaphysical depth.",
+    condition: "Exceptional. No craquelure, surface varnish intact. Preserved under conservation LED illuminating conditions.",
+    certificate: "Full London provenance dossier, Sotheby's export documentation, Certificate No. JSC-2023-LON.",
+    scale: {
+      widthCm: 150,
+      heightCm: 150,
+      aspectRatio: 1.0
+    }
+  },
+  {
+    id: "art-solstice",
+    title: "Solstice Monumentale",
+    artist: "Matteo Barone",
+    year: "2022",
+    category: "sculptural",
+    medium: "Lost-wax cast patinated bronze & hand-gilded concave interior",
+    dimensions: "210 × 85 × 60 cm (82.7 × 33.5 × 23.6 in)",
+    framedDimensions: "Freestanding on Nero Marquina marble plinth",
+    valuation: "$3,200,000",
+    status: "Available Privately",
+    statusType: "available",
+    image: "/images/art-aurelius.jpg",
+    provenanceSnippet: "Barone Archive, Pietrasanta · Exhibited Biennale Arte di Venezia.",
+    provenance: [
+      { year: "2022", event: "Fonderia Artistica Mariani, Pietrasanta", notes: "Cast 1 of an edition of 3 (+ 1 AP)" },
+      { year: "2022", event: "La Biennale di Venezia, Collateral Event", notes: "Palazzo Mora installation" },
+      { year: "2024", event: "Private Advisory Consignment", notes: "Directly through Barone Foundation to Aureum" }
+    ],
+    curatorialNotes: "Barone's monolithic sculpture plays with negative space and solar reflection. The exterior features a velvety black chemical patina, while the deep concave incision is finished in high-polish gold leaf that captures and reflects ambient salon light into the surrounding architectural interior.",
+    condition: "Flawless bronze cast with original foundry stamp and archival patina certificate.",
+    certificate: "Barone Foundation Certificate of Registry, Edition 1/3, signed by the master sculptor.",
+    scale: {
+      widthCm: 85,
+      heightCm: 210,
+      aspectRatio: 0.405
+    }
+  },
+  {
+    id: "art-elysian",
+    title: "Elysian Fragment IV",
+    artist: "Karel van den Berg",
+    year: "1968",
+    category: "blue-chip",
+    medium: "Oil, sand & raw pigment on heavy Belgian unprimed duck",
+    dimensions: "165 × 130 cm (65.0 × 51.2 in)",
+    framedDimensions: "175 × 140 cm (original mid-century raw linen liner)",
+    valuation: "$4,800,000 — $5,500,000",
+    status: "Acquired for Patron",
+    statusType: "acquired",
+    image: "/images/art-convergence.jpg",
+    provenanceSnippet: "Estate of the Artist · Stedelijk Museum Retrospective 1984 · Aureum Advisory 2024.",
+    provenance: [
+      { year: "1968", event: "Studio van den Berg, Amsterdam", notes: "Signed and titled lower right" },
+      { year: "1972", event: "Galerie Schmela, Düsseldorf", notes: "Sold to prominent Rhineland collection" },
+      { year: "1984", event: "Stedelijk Museum, Amsterdam", notes: "Loan exhibition catalog #42" },
+      { year: "2024", event: "Private Advisory Acquisition", notes: "Acquired on behalf of an Aureum Founding Patron" }
+    ],
+    curatorialNotes: "A watershed canvas marking Van den Berg's departure from lyrical abstraction into raw material structuralism. The geological texture and austere tonal authority make it an anchor piece for any museum-calibre modern collection.",
+    condition: "Conserved by the Rijksmuseum Restoration Atelier in 2019. Stable, unlined canvas.",
+    certificate: "Stedelijk Archive de-accession verification and Van den Berg Authentication Board Certificate.",
+    scale: {
+      widthCm: 130,
+      heightCm: 165,
+      aspectRatio: 0.788
+    }
+  }
+];
+
+export const privateViewingRoomArtworks = [
+  {
+    id: "pvr-or-pur",
+    title: "Composition No. VII (L'Or Pur)",
+    artist: "Jean-Luc Moreau",
+    year: "1957",
+    category: "blue-chip",
+    confidential: true,
+    medium: "Oil, beeswax & gold leaf on primed burlap",
+    dimensions: "195 × 145 cm (76.8 × 57.1 in)",
+    framedDimensions: "208 × 158 cm (custom 1950s French gilded cassetta)",
+    valuation: "$12,500,000 — $14,000,000",
+    status: "Confidential Private Offering",
+    statusType: "confidential",
+    image: "/images/art-convergence.jpg",
+    provenanceSnippet: "Galerie Maeght, Paris 1958 → Private Swiss Family Trust → Unseen for 40 years.",
+    provenance: [
+      { year: "1957", event: "Atelier Moreau, Montparnasse", notes: "Key piece of the 'Alchimie Moderne' series" },
+      { year: "1958", event: "Galerie Maeght, Paris", notes: "Solo exhibition; purchased by Swiss Industrialist" },
+      { year: "1982", event: "Private Vault, Geneva FreePort", notes: "Transferred to family trust; kept in climate vault" },
+      { year: "2024", event: "AUREUM Private Sales Mandate", notes: "Exclusive confidential representation" }
+    ],
+    curatorialNotes: "One of the most significant unrecorded post-war French abstractions surviving in private hands. Not offered publicly since 1958. Full multi-spectral imaging and carbon-dating documentation provided exclusively under signed NDA.",
+    condition: "Superb historical state. 100% untouched original varnish, original stretchers.",
+    certificate: "Comité Jean-Luc Moreau Certificate No. CJLM-1957-07; Geneva FreePort Inspection Seal.",
+    scale: {
+      widthCm: 145,
+      heightCm: 195,
+      aspectRatio: 0.744
+    }
+  },
+  {
+    id: "pvr-monolith-dawn",
+    title: "Chamber of Dawn (Triptych)",
+    artist: "Arthur Sterling-Hayes",
+    year: "1964",
+    category: "blue-chip",
+    confidential: true,
+    medium: "Pure pigment and synthetic polymer on three contiguous cotton canvases",
+    dimensions: "240 × 360 cm total (94.5 × 141.7 in)",
+    framedDimensions: "Frameless museum wrap with hidden aluminum cleat system",
+    valuation: "$18,500,000",
+    status: "Private Treaty Sale",
+    statusType: "confidential",
+    image: "/images/art-nocturne.jpg",
+    provenanceSnippet: "Estate of the Artist → Prominent Manhattan Collection → Aureum Private Syndicate.",
+    provenance: [
+      { year: "1964", event: "Sterling-Hayes Studio, Springs, East Hampton", notes: "Created as culminating triptych" },
+      { year: "1969", event: "Albright-Knox Art Gallery Loan", notes: "Exhibition of American Color Field painting" },
+      { year: "1991", event: "Private Collection, Fifth Avenue, New York", notes: "Purchased via Leo Castelli Gallery" },
+      { year: "2024", event: "AUREUM Advisory Private Treaty", notes: "Available for museum placement or private acquisition" }
+    ],
+    curatorialNotes: "A monumental masterwork of American color field painting. The expansive three-panel chromatic field immerses the human peripheral vision, evoking sunrise over deep sea waters.",
+    condition: "Archived in museum climate crate. Accompanied by original Leo Castelli purchase bill and condition report.",
+    certificate: "Sterling-Hayes Foundation Archive entry #SH-1964-003, with verified artist estate signature.",
+    scale: {
+      widthCm: 360,
+      heightCm: 240,
+      aspectRatio: 1.5
+    }
+  }
+];
+
+export const editorialInsights = [
+  {
+    id: "insight-1",
+    title: "The Architecture of Blue-Chip Resilience",
+    subtitle: "How Ultra-High-End Art Outperforms Volatile Equity Markets Across Generational Horizons",
+    date: "October 2024",
+    readTime: "6 min read",
+    author: "Archibald Vance, Chief Curatorial Strategist",
+    category: "Market Intelligence",
+    excerpt: "Over a 30-year timeframe, top-tier Post-War and Modern masterworks have established an uncorrelated hedge against currency debasement, yielding a compound annual return exceeding 9.4% with virtually zero equity beta.",
+    content: "When sovereign wealth funds and multigenerational family offices evaluate capital preservation, tangible cultural assets occupy a distinct tier. Unlike paper assets vulnerable to inflationary expansion, physical masterworks with unassailable provenance exist in strictly finite supply..."
+  },
+  {
+    id: "insight-2",
+    title: "De-accessioning with Discretion: The Private Treaty Advantage",
+    subtitle: "Why the World's Premier Collectors Shun the Public Auction Block",
+    date: "September 2024",
+    readTime: "8 min read",
+    author: "Lady Vivienne Sterling, Senior Advisory Partner",
+    category: "Private Sales",
+    excerpt: "Public auctions risk the 'burned piece' dilemma when market sentiment fluctuates. Private sales via dedicated art advisory ensure strict confidentiality, fixed valuation agreements, and tailored patron matchmaking.",
+    content: "The theatrical spectacle of the evening auction has long captivated public imagination, but behind closed doors, more than 60% of significant high-value transactions now occur through confidential private channels..."
+  },
+  {
+    id: "insight-3",
+    title: "The Provenance of Light: Illuminating Modern Masterpieces",
+    subtitle: "Architectural Lighting and the Conservation Science of 24k Gold & Mineral Pigments",
+    date: "August 2024",
+    readTime: "5 min read",
+    author: "Dr. Henri Dubois, Head of Conservation & Placement",
+    category: "Conservation & Placement",
+    excerpt: "How museum-grade 98+ CRI LED illumination and micro-angle positioning preserve delicate mineral binders while revealing the multidimensional depth of gilded surfaces.",
+    content: "Gold leaf does not merely reflect illumination; it refracts and softens ambient spectra depending on the angle of incised leafing. When installing significant works in contemporary private residences, placement is as crucial as acquisition..."
+  }
+];
+
+export const demoPatronVault = {
+  patron: {
+    name: "Lord Harrison Sterling",
+    memberTier: "Founding Patron (MMXIV)",
+    liaison: "Archibald Vance — Senior Advisory Partner",
+    accountNumber: "AUR-PATRON-0084",
+    lastAppraisalDate: "September 15, 2024",
+    totalPortfolioValue: "$14,850,000",
+    annualAppreciation: "+16.8%",
+    collectionsCount: 4
+  },
+  acquisitions: [
+    {
+      id: "vault-1",
+      title: "Elysian Fragment IV",
+      artist: "Karel van den Berg",
+      year: "1968",
+      medium: "Oil, sand & raw pigment on heavy Belgian unprimed duck",
+      acquisitionYear: "2024",
+      acquisitionPrice: "$4,800,000",
+      currentAppraisal: "$5,450,000",
+      appreciation: "+13.5%",
+      location: "Private Residence, Mayfair Gallery Room",
+      insuranceCert: "Lloyds of London Syndicate #4401-ART",
+      conservationStatus: "Inspected Aug 2024 — Exceptional"
+    },
+    {
+      id: "vault-2",
+      title: "Aurelius (Unique Commission)",
+      artist: "Helena Rostova",
+      year: "2024",
+      medium: "Tempera, lapis pigment & layered 23.75k Florentine leaf",
+      acquisitionYear: "2024",
+      acquisitionPrice: "$2,200,000",
+      currentAppraisal: "$2,500,000",
+      appreciation: "+13.6%",
+      location: "Lake Zurich Villa, Salon Principal",
+      insuranceCert: "AXA XL Fine Art Policy #CH-9921",
+      conservationStatus: "Climate Logged — Optimal"
+    },
+    {
+      id: "vault-3",
+      title: "Constellation of Silence",
+      artist: "Yves Delacroix",
+      year: "1972",
+      medium: "Gold leaf and soot on charred oak panel",
+      acquisitionYear: "2019",
+      acquisitionPrice: "$5,100,000",
+      currentAppraisal: "$6,900,000",
+      appreciation: "+35.3%",
+      location: "Geneva Vault Facility, Bay 14",
+      insuranceCert: "Swiss Re Fine Art Archive #SR-0081",
+      conservationStatus: "Vault Storage — Inspected 2024"
+    }
+  ]
+};
+

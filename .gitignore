@@ -11,3 +11,10 @@ desktop.ini
 
 # Temporary Files
 *.log
+
+# Dependencies & Build Artefacts
+node_modules/
+dist/
+.env
+.env.local
+.cache/
