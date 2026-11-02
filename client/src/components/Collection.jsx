@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Search, Lock, Eye, Sparkles, Filter } from "lucide-react";
+import { Search, Lock, Eye, Sparkles, Scale, Check } from "lucide-react";
 
-export default function Collection({ onSelectArtwork, onOpenPVR }) {
+export default function Collection({ onSelectArtwork, onOpenPVR, onCompareArtworks }) {
   const [artworks, setArtworks] = useState([]);
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
+  const [compareList, setCompareList] = useState([]);
 
   const categories = [
     { id: "all", label: "All Acquisitions" },
@@ -35,6 +36,19 @@ export default function Collection({ onSelectArtwork, onOpenPVR }) {
       console.warn("Backend fetch failed, using fallback data:", err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const toggleCompare = (art, e) => {
+    e.stopPropagation();
+    if (compareList.find((c) => c.id === art.id)) {
+      setCompareList(compareList.filter((c) => c.id !== art.id));
+    } else {
+      if (compareList.length >= 2) {
+        setCompareList([compareList[1], art]);
+      } else {
+        setCompareList([...compareList, art]);
+      }
     }
   };
 
@@ -91,6 +105,53 @@ export default function Collection({ onSelectArtwork, onOpenPVR }) {
           </div>
         </div>
 
+        {/* Floating Compare Drawer Bar */}
+        {compareList.length > 0 && (
+          <div
+            style={{
+              position: "sticky",
+              top: "5.5rem",
+              zIndex: 80,
+              background: "rgba(12,12,24,0.95)",
+              border: "1px solid var(--gold)",
+              padding: "0.75rem 1.5rem",
+              borderRadius: "4px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "2rem",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.8)"
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+              <Scale size={18} color="#D4AF37" />
+              <span style={{ fontFamily: "var(--font-ui)", fontSize: "0.85rem", color: "var(--ivory)" }}>
+                Selected for Comparison:{" "}
+                <strong>{compareList.map((c) => c.title).join(" vs ")}</strong>
+                {compareList.length === 1 && " (Select 1 more artwork)"}
+              </span>
+            </div>
+
+            <div style={{ display: "flex", gap: "0.5rem" }}>
+              {compareList.length === 2 && (
+                <button
+                  className="btn-gold"
+                  onClick={() => onCompareArtworks(compareList[0], compareList[1])}
+                  style={{ padding: "0.4rem 1rem", fontSize: "0.75rem" }}
+                >
+                  Launch Side-by-Side Comparison
+                </button>
+              )}
+              <button
+                onClick={() => setCompareList([])}
+                style={{ background: "transparent", border: "1px solid rgba(212,175,55,0.3)", color: "var(--platinum)", padding: "0.4rem 0.8rem", fontSize: "0.75rem", cursor: "pointer" }}
+              >
+                Clear
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Gallery Grid */}
         <div className="gallery-grid" style={{ minHeight: "350px" }}>
           {loading ? (
@@ -112,51 +173,80 @@ export default function Collection({ onSelectArtwork, onOpenPVR }) {
               </button>
             </div>
           ) : (
-            artworks.map((item, idx) => (
-              <div
-                key={item.id}
-                className={`gallery-item ${idx === 0 && activeCategory === "all" ? "gallery-item--featured" : ""}`}
-                style={{ cursor: "pointer" }}
-                onClick={() => onSelectArtwork(item)}
-              >
-                <div className="gallery-frame" style={{ position: "relative" }}>
-                  {/* Status Tag */}
-                  <div style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 10 }}>
-                    {getStatusBadge(item.statusType, item.status)}
-                  </div>
+            artworks.map((item, idx) => {
+              const isComparing = compareList.some((c) => c.id === item.id);
+              return (
+                <div
+                  key={item.id}
+                  className={`gallery-item ${idx === 0 && activeCategory === "all" ? "gallery-item--featured" : ""}`}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => onSelectArtwork(item)}
+                >
+                  <div className="gallery-frame" style={{ position: "relative" }}>
+                    {/* Status Tag */}
+                    <div style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 10 }}>
+                      {getStatusBadge(item.statusType, item.status)}
+                    </div>
 
-                  <div className="gallery-art">
-                    <img src={item.image} alt={item.title} loading="lazy" />
-                  </div>
+                    {/* Compare Button */}
+                    <button
+                      onClick={(e) => toggleCompare(item, e)}
+                      title="Add to comparative analysis"
+                      style={{
+                        position: "absolute",
+                        top: "1rem",
+                        right: "1rem",
+                        zIndex: 10,
+                        background: isComparing ? "var(--gold)" : "rgba(12,12,24,0.75)",
+                        border: "1px solid var(--gold)",
+                        color: isComparing ? "var(--obsidian)" : "var(--gold)",
+                        padding: "0.3rem 0.6rem",
+                        fontSize: "0.7rem",
+                        fontFamily: "var(--font-ui)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.3rem",
+                        cursor: "pointer",
+                        transition: "all 0.2s"
+                      }}
+                    >
+                      {isComparing ? <Check size={11} /> : <Scale size={11} />}
+                      {isComparing ? "Compared" : "Compare"}
+                    </button>
 
-                  <div className="gallery-overlay">
-                    <div className="gallery-info" style={{ width: "100%" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                        <p className="gallery-title">{item.title}</p>
-                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-ui)", fontSize: "0.8rem" }}>
-                          {item.year}
-                        </span>
-                      </div>
-                      <p style={{ color: "var(--gold)", fontFamily: "var(--font-ui)", fontSize: "0.85rem", margin: "0.2rem 0" }}>
-                        {item.artist}
-                      </p>
-                      <p className="gallery-meta" style={{ marginTop: "0.25rem", fontSize: "0.85rem" }}>
-                        {item.medium} · {item.dimensions}
-                      </p>
-                      <div style={{ marginTop: "0.75rem", display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid rgba(212,175,55,0.2)", paddingTop: "0.6rem" }}>
-                        <span style={{ fontSize: "0.8rem", color: "var(--champagne)", fontFamily: "var(--font-ui)" }}>
-                          Valuation: <strong style={{ color: "var(--gold)" }}>{item.valuation}</strong>
-                        </span>
-                        <span style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem", color: "var(--gold)", fontSize: "0.75rem", fontFamily: "var(--font-ui)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                          <Eye size={13} />
-                          Inspect Dossier
-                        </span>
+                    <div className="gallery-art">
+                      <img src={item.image} alt={item.title} loading="lazy" />
+                    </div>
+
+                    <div className="gallery-overlay">
+                      <div className="gallery-info" style={{ width: "100%" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                          <p className="gallery-title">{item.title}</p>
+                          <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-ui)", fontSize: "0.8rem" }}>
+                            {item.year}
+                          </span>
+                        </div>
+                        <p style={{ color: "var(--gold)", fontFamily: "var(--font-ui)", fontSize: "0.85rem", margin: "0.2rem 0" }}>
+                          {item.artist}
+                        </p>
+                        <p className="gallery-meta" style={{ marginTop: "0.25rem", fontSize: "0.85rem" }}>
+                          {item.medium} · {item.dimensions}
+                        </p>
+                        <div style={{ marginTop: "0.75rem", display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid rgba(212,175,55,0.2)", paddingTop: "0.6rem" }}>
+                          <span style={{ fontSize: "0.8rem", color: "var(--champagne)", fontFamily: "var(--font-ui)" }}>
+                            Valuation: <strong style={{ color: "var(--gold)" }}>{item.valuation}</strong>
+                          </span>
+                          <span style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem", color: "var(--gold)", fontSize: "0.75rem", fontFamily: "var(--font-ui)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                            <Eye size={13} />
+                            Inspect Dossier
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           )}
         </div>
 
@@ -185,4 +275,3 @@ export default function Collection({ onSelectArtwork, onOpenPVR }) {
     </section>
   );
 }
-

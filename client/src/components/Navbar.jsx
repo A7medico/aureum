@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Lock, ShieldCheck, Menu, X } from "lucide-react";
+import { Lock, ShieldCheck, Menu, X, Landmark, TrendingUp } from "lucide-react";
 
 export default function Navbar({ onOpenConcierge, onOpenVault, onOpenPVR }) {
   const [scrolled, setScrolled] = useState(false);
@@ -17,15 +17,16 @@ export default function Navbar({ onOpenConcierge, onOpenVault, onOpenPVR }) {
     { name: "Philosophy", href: "#philosophy" },
     { name: "Services", href: "#services" },
     { name: "Collection", href: "#collection" },
+    { name: "Allocation", href: "#calculator" },
+    { name: "Salons", href: "#salons" },
     { name: "Viewing Room", onClick: onOpenPVR },
-    { name: "Journal", href: "#journal" },
-    { name: "Journey", href: "#journey" }
+    { name: "Journal", href: "#journal" }
   ];
 
   return (
     <>
       <nav id="main-nav" className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
-        <div className="nav-inner" style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 2rem" }}>
+        <div className="nav-inner" style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 2rem" }}>
           <a href="#hero" className="nav-logo" id="nav-logo" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <span>AUREUM</span>
             <span style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "var(--gold)", border: "1px solid rgba(212,175,55,0.4)", padding: "1px 5px" }}>
@@ -40,7 +41,7 @@ export default function Navbar({ onOpenConcierge, onOpenVault, onOpenPVR }) {
                   key={idx}
                   onClick={link.onClick}
                   className="nav-link"
-                  style={{ background: "transparent", border: "none", display: "inline-flex", alignItems: "center", gap: "0.35rem" }}
+                  style={{ background: "transparent", border: "none", display: "inline-flex", alignItems: "center", gap: "0.35rem", cursor: "pointer" }}
                 >
                   <Lock size={12} style={{ color: "var(--gold)" }} />
                   {link.name}
@@ -63,7 +64,8 @@ export default function Navbar({ onOpenConcierge, onOpenVault, onOpenPVR }) {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.35rem",
-                color: "var(--champagne)"
+                color: "var(--champagne)",
+                cursor: "pointer"
               }}
               title="Patron Vault Login"
             >
@@ -149,4 +151,3 @@ export default function Navbar({ onOpenConcierge, onOpenVault, onOpenPVR }) {
     </>
   );
 }
-

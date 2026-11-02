@@ -9,6 +9,10 @@ import InquiryModal from "./components/InquiryModal";
 import PrivateViewingRoom from "./components/PrivateViewingRoom";
 import ConciergeModal from "./components/ConciergeModal";
 import PatronVaultModal from "./components/PatronVaultModal";
+import PortfolioCalculator from "./components/PortfolioCalculator";
+import SalonDirectory from "./components/SalonDirectory";
+import ArtworkComparisonModal from "./components/ArtworkComparisonModal";
+import CuratorChat from "./components/CuratorChat";
 import Journal from "./components/Journal";
 import Journey from "./components/Journey";
 import Numbers from "./components/Numbers";
@@ -18,6 +22,7 @@ import Footer from "./components/Footer";
 export default function App() {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [inquiryArtwork, setInquiryArtwork] = useState(null);
+  const [comparingPair, setComparingPair] = useState(null); // [artA, artB]
   const [isConciergeOpen, setIsConciergeOpen] = useState(false);
   const [isPVROpen, setIsPVROpen] = useState(false);
   const [isVaultOpen, setIsVaultOpen] = useState(false);
@@ -51,11 +56,12 @@ export default function App() {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [selectedArtwork, isConciergeOpen, isPVROpen]);
+  }, [selectedArtwork, isConciergeOpen, isPVROpen, comparingPair]);
 
   // Handler for inquiring directly from Artwork Dossier
   const handleInquireFromArtwork = (art) => {
     setSelectedArtwork(null);
+    setComparingPair(null);
     setInquiryArtwork(art);
   };
 
@@ -77,11 +83,21 @@ export default function App() {
       {/* Three Pillars Services */}
       <Services onOpenConcierge={() => setIsConciergeOpen(true)} />
 
-      {/* Collection Catalog */}
+      {/* Collection Catalog with Comparative Analysis */}
       <Collection
         onSelectArtwork={(art) => setSelectedArtwork(art)}
         onOpenPVR={() => setIsPVROpen(true)}
+        onCompareArtworks={(a, b) => setComparingPair([a, b])}
       />
+
+      {/* Generational Capital Allocation & Portfolio Calculator */}
+      <PortfolioCalculator
+        onOpenConcierge={() => setIsConciergeOpen(true)}
+        onShowToast={showToast}
+      />
+
+      {/* Global Private Salons & Bonded Vaults Directory */}
+      <SalonDirectory onOpenConcierge={() => setIsConciergeOpen(true)} />
 
       {/* Curatorial Monographs / Journal */}
       <Journal onOpenConcierge={() => setIsConciergeOpen(true)} />
@@ -108,6 +124,16 @@ export default function App() {
         <ArtworkModal
           artwork={selectedArtwork}
           onClose={() => setSelectedArtwork(null)}
+          onInquire={handleInquireFromArtwork}
+        />
+      )}
+
+      {/* Masterwork Comparative Analysis Modal */}
+      {comparingPair && (
+        <ArtworkComparisonModal
+          artA={comparingPair[0]}
+          artB={comparingPair[1]}
+          onClose={() => setComparingPair(null)}
           onInquire={handleInquireFromArtwork}
         />
       )}
@@ -144,6 +170,18 @@ export default function App() {
         onShowToast={showToast}
       />
 
+      {/* Floating Confidential Advisory Concierge Desk */}
+      <CuratorChat
+        onOpenConcierge={() => setIsConciergeOpen(true)}
+        onOpenPVR={() => setIsPVROpen(true)}
+        onSelectArtworkId={(id) => {
+          // Find artwork by id
+          fetch(`/api/artworks/${id}`)
+            .then((r) => r.json())
+            .then((d) => d.data && setSelectedArtwork(d.data));
+        }}
+      />
+
       {/* Toast Notification Container */}
       <div className="toast-container">
         {toasts.map((t) => (
@@ -156,4 +194,3 @@ export default function App() {
     </div>
   );
 }
-
